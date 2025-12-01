@@ -1,0 +1,36 @@
+<!--
+
+-->
+<resources>
+    <string name="app_name">Cevicheria Uce</string>
+    <string name="order_cupcakes">Order ceviche</string>
+    <string name="choose_flavor">Choose Flavor the ceviche</string>
+    <string name="special_flavor">Special Flavor</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="choose_pickup_date">Choose Pickup Date</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="send">Send Order to Another App</string>
+    <string name="quantity">Quantity</string>
+    <string name="flavor">Flavor of ceviche</string>
+    <string name="pickup_date">Pickup date</string>
+    <string name="subtotal_price">Subtotal %s</string>
+    <string name="total_price">Total %s</string>
+    <string name="new_cupcake_order">New Ceciche Order</string>
+    <string name="order_details">Quantity of dishes: %1$s \nFlavor: %2$s \nPickup date: %3$s \nTotal: %4$s \n\nThank you!</string>
+    <string name="back_button">Back</string>
+    <plurals name="cupcakes">
+        <item quantity="one">%d ceviche</item>
+        <item quantity="other">%d ceviches</item>
+    </plurals>
+
+    <string name="camaron">Shrimp</string>
+    <string name="concha">Shell</string>
+    <string name="cangrejo">Crab</string>
+    <string name="pollo">Chicken</string>
+    <string name="mixto">Mixto</string>
+
+    <string name="one_plate">1 dish</string>
+    <string name="five_plates">5 dishes</string>
+    <string name="twelve_plates">12 dishes</string>
+</resources>
