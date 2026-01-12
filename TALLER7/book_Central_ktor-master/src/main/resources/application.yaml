@@ -1,0 +1,10 @@
+ktor:
+    application:
+        modules:
+            - ec.edu.uce.ApplicationKt.module
+    deployment:
+        port: 8085
+postgres:
+  url: "jdbc:postgresql://ep-small-voice-ac1y1zzv-pooler.sa-east-1.aws.neon.tech/book-central?sslmode=require"
+  user: "neondb_owner"
+  password: "npg_usPygn02CWwv"
