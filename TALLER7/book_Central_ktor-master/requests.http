@@ -1,0 +1,48 @@
+### Crear un nuevo usuario
+POST http://localhost:8080/usuarios
+Content-Type: application/json
+
+{
+  "id": 0,
+  "nombreUsuario": "usuario_prueba",
+  "nombre": "Juan",
+  "apellido": "Perez",
+  "correo": "juan.perez@email.com",
+  "password": "securePass123",
+  "rol": "CLIENTE",
+  "metodoPagoFavorito": "Tarjeta"
+}
+
+### Obtener usuario por ID
+GET http://localhost:8080/usuarios/1
+Accept: application/json
+
+### Actualizar usuario
+PUT http://localhost:8080/usuarios/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombreUsuario": "usuario_prueba_editado",
+  "nombre": "Juan Editado",
+  "apellido": "Perez",
+  "correo": "juan.perez@email.com",
+  "password": "securePass123",
+  "rol": "CLIENTE",
+  "metodoPagoFavorito": "Paypal"
+}
+
+### Eliminar usuario
+DELETE http://localhost:8080/usuarios/1
+
+### Crear Inventario
+POST http://localhost:8080/inventario
+Content-Type: application/json
+
+{
+  "id": 0,
+  "librosStock": {
+    "El Principito": 50,
+    "Cien Años de Soledad": 30
+  }
+}
