@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import ec.edu.uce.book.data.dao.LastLoginDao
 import ec.edu.uce.book.data.dao.UserDao
 import ec.edu.uce.book.data.dao.ProductDao
 import ec.edu.uce.book.data.entity.UserEntity
@@ -18,6 +19,8 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun productDao(): ProductDao
+
+    abstract fun lastLoginDao(): LastLoginDao
 
     companion object {
         @Volatile
