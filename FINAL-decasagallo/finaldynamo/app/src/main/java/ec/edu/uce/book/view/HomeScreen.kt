@@ -33,6 +33,8 @@ import ec.edu.uce.book.util.SyncService
 import ec.edu.uce.book.util.SyncResult
 import ec.edu.uce.book.util.NotificationHelper
 import kotlinx.coroutines.launch
+import ec.edu.uce.book.util.MsgEditService
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,6 +70,8 @@ fun HomeScreen(
     }
 
 
+    var showEditBlockedDialog by remember { mutableStateOf(false) }
+    var editBlockedMessage by remember { mutableStateOf("") }
     var showDialog by remember { mutableStateOf(false) }
     var selectedProduct by remember { mutableStateOf<ProductEntity?>(null) }
     var isSyncing by remember { mutableStateOf(false) }
@@ -232,12 +236,24 @@ fun HomeScreen(
                 items(products, key = { it.id }) { product ->
                     ProductCard(
                         product = product,
-                        onEdit = { onEditProduct(product) },
+                        onEdit = {
+                            scope.launch {
+                                // ✅ REGLA DEL EXAMEN: no permitir edición si está "inactivo"
+                                if (!product.available) {
+                                    val msg = MsgEditService.getMsgEdit()
+                                    editBlockedMessage = msg
+                                    showEditBlockedDialog = true
+                                } else {
+                                    onEditProduct(product)
+                                }
+                            }
+                        },
                         onDelete = {
                             selectedProduct = product
                             showDialog = true
                         }
                     )
+
                 }
             }
         }
@@ -329,6 +345,20 @@ fun HomeScreen(
                 shape = RoundedCornerShape(16.dp)
             )
         }
+
+        if (showEditBlockedDialog) {
+            AlertDialog(
+                onDismissRequest = { showEditBlockedDialog = false },
+                title = { Text("Imposible editar") },
+                text = { Text(editBlockedMessage) },
+                confirmButton = {
+                    Button(onClick = { showEditBlockedDialog = false }) {
+                        Text("Aceptar")
+                    }
+                }
+            )
+        }
+
     }
 }
 
