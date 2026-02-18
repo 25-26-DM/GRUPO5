@@ -173,18 +173,20 @@ fun AppNavigation(
         }
 
         "login" -> LoginScreen(
-            userViewModel = userViewModel,
-            onLoginSuccess = {
+            onLoginSuccess = { email ->
                 SessionManager.startSession()
 
-                // ✅ Sincronizar al iniciar sesión (sin GlobalScope)
+                // ✅ Si quieres guardar el correo actual (por ejemplo para lastlog luego)
+                // currentUserEmail = email
+
+                // ✅ Sincronizar al iniciar sesión si hay internet
                 if (isOnline) {
                     scope.launch { syncService.performFullSync() }
                 }
 
                 currentScreen = "home"
             },
-            onRegister = { currentScreen = "register" }
+            onRegister = { currentScreen = "register" } // o borra register si no lo usarán
         )
 
         "register" -> RegisterScreen(
